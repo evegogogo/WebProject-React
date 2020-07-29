@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Recipe from './Recipe';
 import './App.css';
 
-const Food = () => {
+const Foods = () => {
 
   const APP_ID = "bc084cdd";
   const APP_KEY = "22f56e6acf5445f6e93bdbf3c4422ed9";
@@ -58,4 +58,4 @@ const Food = () => {
   );
 }
 
-export default Food;
+export default Foods;
