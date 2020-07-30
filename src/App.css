@@ -92,3 +92,9 @@ table .col {
   font-size: x-large;
   font-family: cursive;
 }
+
+.alarm-info {
+  font-size: xx-large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: oblique;
+}
