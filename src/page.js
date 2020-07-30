@@ -11,8 +11,9 @@ import User from "./user";
 import exerciseDetails from "./exerciseDetails";
 // import foodDetails from "./foodDetails";
 import NotFound from "./notFound";
-import "./App.css";
+import "./style/App.css";
 import Agreement from "./components/agreement";
+import Footer from "./footer";
 
 
 
@@ -36,6 +37,7 @@ class Page extends Component {
             <Redirect to="/notfound" />
           </Switch>
         </div>
+        <Footer/>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getFoods } from "./services/fakeFoodService";
 import Like from "./components/like";
-import "./App.css";
+import "./style/App.css";
 
 class Foods extends Component {
   state = {

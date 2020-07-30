@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getExercises } from "./services/fakeExerciseService";
 import Like from "./components/like";
-import "./App.css";
+import "./style/App.css";
 
 class Exercises extends Component {
   state = {
