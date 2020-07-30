@@ -6,8 +6,10 @@ class Foods extends Component {
     foods: getFoods()
   };
 
-  handleDelete = movie => {
-
+  handleDelete = food => {
+    console.log(food);
+    const foods = this.state.foods.filter(f => f._id !== food._id);
+    this.setState({ foods });
   }
 
   render() {
@@ -18,14 +20,16 @@ class Foods extends Component {
             <th>Name</th>
             <th>Calories</th>
             <th>Status</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {this.state.foods.map(f => (
-            <tr>
+            <tr key={f._id}>
               <td>{f.name}</td>
               <td>{f.calories}</td>
               <td>{f.status}</td>
+              <td><button onClick={() => this.handleDelete(f)} className="btn btn-danger btn-sm">Delete</button></td>
             </tr>
           ))}
         </tbody>
