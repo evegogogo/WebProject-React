@@ -72,7 +72,7 @@
 }
 
 .note {
-  padding: 0 7rem;
+  padding: 0 5rem;
   margin: 0 auto;
   font-size: x-large;
 }
@@ -83,8 +83,8 @@
 }
 
 table .col-name {
-  font-size: xx-large;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: x-large;
+  font-family: monospace;
   color: slategrey;
 }
 

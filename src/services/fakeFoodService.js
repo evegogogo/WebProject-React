@@ -3,13 +3,15 @@ const foods = [
     _id: "5b21ca3eeb7f6fbccd471815",
     name: "banana",
     calories: 300,
-    status: "dinner"
+    status: "dinner",
+    liked: true
   },
   {
     _id: "5b21ca3eeb7f6fbccd471816",
     name: "apple",
     calories: 250,
-    status: "breakfast"
+    status: "breakfast",
+    liked:true
   },
   {
     _id: "5b21ca3eeb7f6fbccd471817",

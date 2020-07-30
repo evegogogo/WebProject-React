@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getFoods } from "./services/fakeFoodService";
+import Like from "./components/like";
 import "./App.css";
 
 class Foods extends Component {
@@ -10,7 +11,16 @@ class Foods extends Component {
   handleDelete = food => {
     const foods = this.state.foods.filter(f => f._id !== food._id);
     this.setState({ foods });
-  }
+  };
+
+
+  handleLike = (food) => {
+    const foods = [...this.state.foods];
+    const index = foods.indexOf(food);
+    foods[index] = {...foods[index]};
+    foods[index].liked = !foods[index].liked;
+    this.setState({ foods });
+  };
 
   render() {
     
@@ -28,6 +38,7 @@ class Foods extends Component {
               <th className="col-name">Name</th>
               <th className="col-name">Calories</th>
               <th className="col-name">Status</th>
+              <th>Like</th>
               <th></th>
             </tr>
           </thead>
@@ -37,6 +48,9 @@ class Foods extends Component {
                 <td className="col">{f.name}</td>
                 <td className="col">{f.calories}</td>
                 <td className="col">{f.status}</td>
+                <td>
+                  <Like liked={f.liked} onClick={() => this.handleLike(f)}/>
+                </td>
                 <td className="col"><button onClick={() => this.handleDelete(f)} className="btn btn-danger btn-sm">Delete</button></td>
               </tr>
             ))}
