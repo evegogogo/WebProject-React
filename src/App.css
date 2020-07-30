@@ -71,12 +71,6 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.note {
-  padding: 0 5rem;
-  margin: 0 auto;
-  font-size: x-large;
-}
-
 .navbar-nav {
   font-size: xx-large;
   padding: 0rem 5rem;
@@ -93,6 +87,12 @@ table .col {
   font-family: cursive;
 }
 
+.note {
+  font-size: x-large;
+  text-align: left;
+  padding-left: 7rem;
+}
+
 .alarm-info {
   font-size: xx-large;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -106,3 +106,10 @@ table .col {
   align-items: center;
 }
 
+.navbar-brand {
+  color: aliceblue;
+}
+
+.navbar-nav {
+  text-shadow: darkgray;
+}

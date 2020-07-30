@@ -21,7 +21,7 @@ class Page extends Component {
     return (
       <div>
         <NavBar />
-        <div className="content">
+        <div className="App">
           <Switch>
             <Route path="/recipes" component={Recipes} />
             <Route path="/foods" component={Foods} />
