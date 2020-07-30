@@ -98,3 +98,11 @@ table .col {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-style: oblique;
 }
+
+.alarm-icon {
+  display: flex;
+  padding: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+

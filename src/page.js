@@ -12,6 +12,7 @@ import exerciseDetails from "./exerciseDetails";
 // import foodDetails from "./foodDetails";
 import NotFound from "./notFound";
 import "./App.css";
+import Agreement from "./components/agreement";
 
 
 
@@ -29,6 +30,7 @@ class Page extends Component {
             <Route path="/alarm" component={Alarm} />
             <Route path="/history" component={History} />
             <Route path="/user" component={User} />
+            <Route path="/agreement" component={Agreement} />
             <Route path="/notfound" component={NotFound} />
             <Route path="/" exact component={Home} />
             <Redirect to="/notfound" />
