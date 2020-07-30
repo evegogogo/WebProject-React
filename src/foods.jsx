@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getFoods } from "./services/fakeFoodService";
+import "./App.css";
 
 class Foods extends Component {
   state = {
@@ -15,28 +16,28 @@ class Foods extends Component {
     
 
     if (this.state.foods.length === 0) return (
-      <p>You have no meal records.</p>
+      <p className="note">You have no meal records.</p>
     );
 
     return (
       <React.Fragment>
-        <p>You have {this.state.foods.length} meal records in the database.</p>
+        <p className="note">You have {this.state.foods.length} meal records in the database.</p>
         <table className="table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Calories</th>
-              <th>Status</th>
+              <th className="col-name">Name</th>
+              <th className="col-name">Calories</th>
+              <th className="col-name">Status</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {this.state.foods.map(f => (
               <tr key={f._id}>
-                <td>{f.name}</td>
-                <td>{f.calories}</td>
-                <td>{f.status}</td>
-                <td><button onClick={() => this.handleDelete(f)} className="btn btn-danger btn-sm">Delete</button></td>
+                <td className="col">{f.name}</td>
+                <td className="col">{f.calories}</td>
+                <td className="col">{f.status}</td>
+                <td className="col"><button onClick={() => this.handleDelete(f)} className="btn btn-danger btn-sm">Delete</button></td>
               </tr>
             ))}
           </tbody>
