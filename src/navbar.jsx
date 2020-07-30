@@ -13,7 +13,13 @@ const NavBar = () => {
         <a href="/exercises">Exercises</a>
       </li>
       <li>
-        <a href="/admin">Admin</a>
+        <a href="/alarm">Alarm</a>
+      </li>
+      <li>
+        <a href="/dashboard">Dashboard</a>
+      </li>
+      <li>
+        <a href="/users">Users</a>
       </li>
     </ul>
   );
