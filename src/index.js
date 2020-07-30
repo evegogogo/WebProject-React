@@ -5,6 +5,7 @@ import './index.css';
 import Page from './page';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
 
 
 ReactDOM.render(
