@@ -1,29 +1,46 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/recipes">Recipes</Link>
-      </li>
-      <li>
-        <Link to="/exercises">Exercises</Link>
-      </li>
-      <li>
-        <Link to="/alarm">Alarm</Link>
-      </li>
-      <li>
-        <Link to="/dashboard">Dashboard</Link>
-      </li>
-      <li>
-        <Link to="/users">Users</Link>
-      </li>
-    </ul>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand" to="/">
+        CrazyFit
+      </Link>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon" />
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav">
+          <NavLink className="nav-item nav-link" to="/">
+            Home
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/recipes">
+            Recipes
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/exercises">
+            Exercises
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/alarm">
+            Alarm
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/dashboard">
+            Dashboard
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/user">
+            User
+          </NavLink>
+        </div>
+      </div>
+    </nav>
   );
 };
 

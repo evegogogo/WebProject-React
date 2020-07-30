@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class exerciseDetails extends Component {
     handleSave = () => {
-
+        this.props.history.push('/exercises');
     }
     render() { 
         return ( 
