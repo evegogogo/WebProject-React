@@ -4,7 +4,7 @@ import NavBar from "./navbar";
 import Recipes from "./recipes";
 import Exercises from "./exercises";
 import Home from "./home";
-import Dashboard from "./dashboard";
+import History from "./history";
 import Alarm from './alarm'
 import User from "./user";
 import exerciseDetails from "./exerciseDetails";
@@ -25,7 +25,7 @@ class Page extends Component {
             <Route path="/exercises/:id" component={exerciseDetails} />
             <Route path="/exercises" render={(props) => <Exercises sortBy="newest" {...props} />}/>
             <Route path="/alarm" component={Alarm} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/history" component={History} />
             <Route path="/user" component={User} />
             <Route path="/notfound" component={NotFound} />
             <Route path="/" exact component={Home} />
