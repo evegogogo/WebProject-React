@@ -20,24 +20,24 @@ import Footer from "./footer";
 class Page extends Component {
   render() {
     return (
-      <div>
+      <div className="main_page">
         <NavBar />
         <div className="App">
           <Switch>
             <Route path="/recipes" component={Recipes} />
             <Route path="/foods" component={Foods} />
             <Route path="/exercises/:id" component={exerciseDetails} />
-            <Route path="/exercises" render={(props) => <Exercises sortBy="newest" {...props} />}/>
+            <Route path="/exercises" render={(props) => <Exercises sortBy="newest" {...props} />} />
             <Route path="/alarm" component={Alarm} />
             <Route path="/history" component={History} />
             <Route path="/user" component={User} />
             <Route path="/agreement" component={Agreement} />
+            <Route path="/home" component={Home} />
             <Route path="/notfound" component={NotFound} />
-            <Route path="/" exact component={Home} />
-            <Redirect to="/notfound" />
+            <Redirect to="/home" />
           </Switch>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

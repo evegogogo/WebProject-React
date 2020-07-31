@@ -7,28 +7,27 @@ const Footer = () => (
     <div className="container">
       <div className="row">
         <div className="col">
-          <NavLink className="nav-item nav-link" to="/contact">
+          <NavLink className="footer_text" to="/contact">
             Contact Us
           </NavLink>
         </div>
         <div className="col">
-          <NavLink className="nav-item nav-link" to="/about">
+          <NavLink className="footer_text" to="/about">
             About Us
           </NavLink>
         </div>
         <div className="col">
-          <NavLink className="nav-item nav-link" to="/faqs">
+          <NavLink className="footer_text" to="/faqs">
             FAQS
           </NavLink>
         </div>
         <div className="col">
-          <NavLink className="nav-item nav-link" to="/join">
-            Join Our Team
+          <NavLink className="footer_text" to="/join">
+            Join Us
           </NavLink>
         </div>
       </div>
-      <hr />
-      <div className="row">
+      <div className="row" className="footer_copy">
         <p className="col">
           &copy; {new Date().getFullYear()} CrazyFit | All rights reserved
         </p>

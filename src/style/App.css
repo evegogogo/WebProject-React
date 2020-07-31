@@ -1,3 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900");
+
+.main_page {
+  display: grid;
+  grid-template-rows: 100px auto 100px;
+  position: relative;
+  line-height: 1.5;
+  min-height: calc(100vh - 4rem);
+  align-items: center;
+  justify-content: center;
+}
 
 .App {
   min-height: 100vh;
