@@ -27,7 +27,7 @@ const Footer = () => (
           </NavLink>
         </div>
       </div>
-      <div className="row" className="footer_copy">
+      <div className="row footer_copy" >
         <p className="col">
           &copy; {new Date().getFullYear()} CrazyFit | All rights reserved
         </p>
