@@ -20,6 +20,11 @@ const Home = () => (
       </div>
       <div className="features">
         <div className="features_container">
+          <div className="row title_box">
+            <div className="features_title">
+              <h2>The Tools for Your Goals</h2>
+            </div>
+          </div>
           <div className="row">
             <div className="col">
               <div className="icon_box_img">
@@ -59,14 +64,14 @@ const Home = () => (
                 </NavLink>
               </div>
               <div className="icon_box_text">
-                <p>Use the timer to record your exercise time.</p>
+                <p>Use the alarm to record your exercise time.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div >
 );
 
 export default Home;
