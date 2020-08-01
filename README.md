@@ -21,36 +21,36 @@ For the UI part, we created the basic components that will be used in later deve
 
 * The landing page
 
-  ![landingpage1](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\readme\landingpage1.jpg)
+  ![landingpage1](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/landingpage1.jpg)
 
-  ![landingpage2](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\readme\landingpage2.png)
+  ![landingpage2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/landingpage2.png)
 
-  ![landingpage3](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\readme\landingpage3.png)
+  ![landingpage3](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/landingpage3.png)
 
 * Receipes
 
-  ![recipes](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\readme\recipes.png)
+  ![recipes](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/recipes.png)
 
-  ![recipes2](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\readme\recipes2.png)
+  ![recipes2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/recipes2.png)
 
 * Foods
 
-  ![foods](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\readme\foods.png)
+  ![foods](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/foods.png)
 
 * Exercise
 
-  ![exercise](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\readme\exercise.png)
+  ![exercise](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/exercise.png)
 
 * Alarm
 
-  ![alarm](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\readme\alarm.png)
+  ![alarm](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/alarm.png)
 
 * History
 
-  ![history](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\readme\history.png)
+  ![history](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/history.png)
 
 * User
 
-  ![user](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\readme\user.png)
+  ![user](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/user.png)
 
 
