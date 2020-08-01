@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900");
+
+.footer {
+    bottom: 0;
+    left: 0;
+    display: flex;
+    height: 5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: aliceblue;
+}
+
+.container{
+    display: block;
+    padding-inline-start: 20px;
+    width: 50vw;
+    box-sizing: border-box;
+}
+
+.footer_text{
+    margin-top: 60px;
+    font-size: 20px;
+    font-family: Muli;
+    font-weight: 500;
+    color: black;
+}
+
+.footer_copy {
+    font-size: small;
+    text-align: center;
+}

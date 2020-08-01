@@ -1,13 +1,8 @@
 import React, {useEffect, useState} from 'react';
-<<<<<<< HEAD
-import Recipe from '../src/Recipe';
-import './App.css';
-=======
 import Recipe from './Recipe';
 import './style/App.css';
->>>>>>> fd44b449fc2556ae9fd4513df9e19ae1cdf36b9f
 
-const App = () => {
+const Foods = () => {
 
   const APP_ID = "bc084cdd";
   const APP_KEY = "22f56e6acf5445f6e93bdbf3c4422ed9";
@@ -23,11 +18,10 @@ const App = () => {
   const getRecipes = async () => {
     const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
-    console.log(data);
     setRecipes(data.hits);
   }
 
-  useEffect(  () => {
+  useEffect( () => {
     getRecipes();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
@@ -63,4 +57,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default Foods;
