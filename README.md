@@ -4,7 +4,7 @@ This project is a fitness app provided food recipe, food tracker, exercise track
 ### Iteration 1
 Create basic components that will be used in later developing stage. Use recipe API to get recipes based on users' search. Render basic layout, navbar of the webPage.
 
-- ![Iteration 1 homePage](/screenshots/1.png)
+- ![Iteration 1 homePage](/src/screenshots/1.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
