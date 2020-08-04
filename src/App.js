@@ -1,11 +1,6 @@
 import React, {useEffect, useState} from 'react';
-<<<<<<< HEAD
-import Recipe from '../src/Recipe';
-import './App.css';
-=======
 import Recipe from './Recipe';
 import './style/App.css';
->>>>>>> fd44b449fc2556ae9fd4513df9e19ae1cdf36b9f
 
 const App = () => {
 
