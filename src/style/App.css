@@ -6,8 +6,7 @@
   position: relative;
   line-height: 1.5;
   min-height: calc(100vh - 4rem);
-  align-items: center;
-  justify-content: center;
+  
 }
 
 .App {
@@ -85,7 +84,11 @@
 
 .navbar-nav {
   font-size: xx-large;
-  padding: 0rem 5rem;
+  padding: 0rem 3rem;
+}
+
+.nav-item {
+  margin: 0 1rem;
 }
 
 table .col-name {
@@ -120,6 +123,7 @@ table .col {
 
 .navbar-brand {
   color: aliceblue;
+  font-size: 50px !important;
 }
 
 .navbar-nav {
@@ -129,4 +133,8 @@ table .col {
 body {
   margin: 0;
   padding: 0 0 0 0;
+}
+
+#right-corner {
+  float: right;
 }

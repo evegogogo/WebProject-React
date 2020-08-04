@@ -12,10 +12,11 @@ import Alarm from './alarm'
 import exerciseDetails from "./exerciseDetails";
 // import foodDetails from "./foodDetails";
 import NotFound from "./notFound";
-import "./style/App.css";
+
 import Agreement from "./components/agreement";
-import Footer from "./footer";
+// import Footer from "./footer";
 import registration from './registration';
+import "./style/App.css";
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/graphql'
@@ -24,7 +25,7 @@ const client = new ApolloClient({
 class Page extends Component {
   render() {
     return (
-      <ApolloProvider>
+      <ApolloProvider client={client}>
         <div className="main_page">
           <NavBar />
           <div className="App">

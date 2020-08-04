@@ -3,7 +3,7 @@ import React from "react";
 const History = () => {
   return (
     <div>
-      <table class="table table-hover">
+      <table className="table table-hover">
         <thead>
           <tr>
             <th scope="col">Date</th>
@@ -45,12 +45,12 @@ const History = () => {
           </tr>
           <tr>
             <th scope="row">6</th>
-            <td colspan="2">ice cream + chocolate bar + milk</td>
+            <td colSpan="2">ice cream + chocolate bar + milk</td>
             <td>-400</td>
           </tr>
           <tr>
             <th scope="row">7</th>
-            <td colspan="2">fries + burger + code</td>
+            <td colSpan="2">fries + burger + code</td>
             <td>-650</td>
           </tr>
         </tbody>

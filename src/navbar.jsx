@@ -35,7 +35,10 @@ const NavBar = () => {
           <NavLink className="nav-item nav-link" to="/history">
             History
           </NavLink>
-          <NavLink className="nav-item nav-link" to="/registration">
+          
+        </div>
+        <div className="navbar-nav navbar-right">
+          <NavLink id="right-corner" className="nav-item nav-link " to="/registration">
             Account
           </NavLink>
         </div>

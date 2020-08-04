@@ -8,6 +8,7 @@ import "./style/App.css";
 const getFoodsQuery = gql`
   {
     foods {
+      id
       name
       calories
     }
@@ -26,11 +27,12 @@ class Foods extends Component {
 
   displayFoods() {
     var data = this.props.data;
+    console.log(data);
     if (data.loading) {
-      return (<div>Loading foods...</div>)
+      return (<tr><td colSpan="5">Loading data...</td></tr>);
     } else {
       return (data.foods.map(f => (
-        <tr key={f._id}>
+        <tr key={f.id}>
           <td className="col">{f.name}</td>
           <td className="col">{f.calories}</td>
           <td className="col">{f.status}</td>
@@ -41,8 +43,16 @@ class Foods extends Component {
         </tr>
       )))
     }
-  }
+  };
 
+  countFoods() {
+    var data = this.props.data;
+    if (data.loading) {
+      return 0;
+    } else {
+      return data.foods.length;
+    }
+  }
 
   handleLike = (food) => {
     const foods = [...this.state.foods];
@@ -61,7 +71,7 @@ class Foods extends Component {
 
     return (
       <React.Fragment>
-        <p className="note">You have {this.state.foods.length} meal records in the database.</p>
+        <p className="note">You have {this.countFoods()} meal records in the database.</p>
         <table className="table">
           <thead>
             <tr>

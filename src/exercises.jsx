@@ -1,7 +1,21 @@
 import React, { Component } from "react";
 import { getExercises } from "./services/fakeExerciseService";
+import { gql } from 'apollo-boost';
+import { graphql } from 'react-apollo';
 import Like from "./components/like";
 import "./style/App.css";
+
+const getExercisesQuery = gql`
+  {
+    exercises {
+      id
+      name
+      calories
+      status
+      due
+    }
+  }
+`
 
 class Exercises extends Component {
   state = {
@@ -12,6 +26,35 @@ class Exercises extends Component {
     const exercises = this.state.exercises.filter(e => e._id !== exercise._id);
     this.setState({ exercises });
   };
+
+  displayExercises() {
+    var data = this.props.data;
+    if (data.loading) {
+      return (<tr><td colSpan="6">Loading Exercises...</td></tr>)
+    } else {
+      return (data.exercises.map(e => (
+        <tr key={e.id}>
+          <td className="col">{e.name}</td>
+          <td className="col">{e.calories}</td>
+          <td className="col">{e.status}</td>
+          <td className="col">{e.due}</td>
+          <td>
+            <Like liked={e.liked} onClick={() => this.handleLike(e)}/>
+          </td>
+          <td className="col"><button onClick={() => this.handleDelete(e)} className="btn btn-danger btn-sm">Delete</button></td>
+        </tr>
+      )))
+    }
+  };
+
+  countExercises() {
+    var data = this.props.data;
+    if (data.loading) {
+      return 0;
+    } else {
+      return data.exercises.length;
+    }
+  }
 
 
   handleLike = (exercise) => {
@@ -31,7 +74,7 @@ class Exercises extends Component {
 
     return (
       <React.Fragment>
-        <p className="note">You have {this.state.exercises.length} exercises records in the database.</p>
+        <p className="note">You have {this.countExercises()} exercises records in the database.</p>
         <table className="table">
           <thead>
             <tr>
@@ -44,18 +87,7 @@ class Exercises extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.exercises.map(e => (
-              <tr key={e._id}>
-                <td className="col">{e.name}</td>
-                <td className="col">{e.calories}</td>
-                <td className="col">{e.status}</td>
-                <td className="col">{e.due}</td>
-                <td>
-                  <Like liked={e.liked} onClick={() => this.handleLike(e)}/>
-                </td>
-                <td className="col"><button onClick={() => this.handleDelete(e)} className="btn btn-danger btn-sm">Delete</button></td>
-              </tr>
-            ))}
+            {this.displayExercises()}
           </tbody>
         </table>
       </React.Fragment>
@@ -63,4 +95,4 @@ class Exercises extends Component {
   }
 }
 
-export default Exercises;
+export default graphql(getExercisesQuery)(Exercises);
