@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from 'react-router-dom'
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 import NavBar from "./navbar";
 import Recipes from "./recipes";
 import Exercises from "./exercises";
@@ -16,29 +18,34 @@ import Agreement from "./components/agreement";
 import Footer from "./footer";
 
 
+const client = new ApolloClient({
+  uri: 'http://localhost:5000/graphql'
+});
 
 class Page extends Component {
   render() {
     return (
-      <div className="main_page">
-        <NavBar />
-        <div className="App">
-          <Switch>
-            <Route path="/recipes" component={Recipes} />
-            <Route path="/foods" component={Foods} />
-            <Route path="/exercises/:id" component={exerciseDetails} />
-            <Route path="/exercises" render={(props) => <Exercises sortBy="newest" {...props} />} />
-            <Route path="/alarm" component={Alarm} />
-            <Route path="/history" component={History} />
-            <Route path="/user" component={User} />
-            <Route path="/agreement" component={Agreement} />
-            <Route path="/home" component={Home} />
-            <Route path="/notfound" component={NotFound} />
-            <Redirect to="/home" />
-          </Switch>
+      <ApolloProvider client={client}>
+        <div className="main_page">
+          <NavBar />
+          <div className="App">
+            <Switch>
+              <Route path="/recipes" component={Recipes} />
+              <Route path="/foods" component={Foods} />
+              <Route path="/exercises/:id" component={exerciseDetails} />
+              <Route path="/exercises" render={(props) => <Exercises sortBy="newest" {...props} />} />
+              <Route path="/alarm" component={Alarm} />
+              <Route path="/history" component={History} />
+              <Route path="/user" component={User} />
+              <Route path="/agreement" component={Agreement} />
+              <Route path="/home" component={Home} />
+              <Route path="/notfound" component={NotFound} />
+              <Redirect to="/home" />
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </ApolloProvider>
     );
   }
 }

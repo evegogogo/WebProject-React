@@ -1,7 +1,18 @@
 import React, { Component } from "react";
+import { gql } from 'apollo-boost';
+import { graphql } from 'react-apollo';
 import { getFoods } from "./services/fakeFoodService";
 import Like from "./components/like";
 import "./style/App.css";
+
+const getFoodsQuery = gql`
+  {
+    foods {
+      name
+      calories
+    }
+  }
+`
 
 class Foods extends Component {
   state = {
@@ -12,6 +23,25 @@ class Foods extends Component {
     const foods = this.state.foods.filter(f => f._id !== food._id);
     this.setState({ foods });
   };
+
+  displayFoods() {
+    var data = this.props.data;
+    if (data.loading) {
+      return (<div>Loading foods...</div>)
+    } else {
+      return (data.foods.map(f => (
+        <tr key={f._id}>
+          <td className="col">{f.name}</td>
+          <td className="col">{f.calories}</td>
+          <td className="col">{f.status}</td>
+          <td>
+            <Like liked={f.liked} onClick={() => this.handleLike(f)}/>
+          </td>
+          <td className="col"><button onClick={() => this.handleDelete(f)} className="btn btn-danger btn-sm">Delete</button></td>
+        </tr>
+      )))
+    }
+  }
 
 
   handleLike = (food) => {
@@ -43,17 +73,7 @@ class Foods extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.foods.map(f => (
-              <tr key={f._id}>
-                <td className="col">{f.name}</td>
-                <td className="col">{f.calories}</td>
-                <td className="col">{f.status}</td>
-                <td>
-                  <Like liked={f.liked} onClick={() => this.handleLike(f)}/>
-                </td>
-                <td className="col"><button onClick={() => this.handleDelete(f)} className="btn btn-danger btn-sm">Delete</button></td>
-              </tr>
-            ))}
+            {this.displayFoods()}
           </tbody>
         </table>
       </React.Fragment>
@@ -61,4 +81,4 @@ class Foods extends Component {
   }
 }
 
-export default Foods;
+export default graphql(getFoodsQuery)(Foods);
