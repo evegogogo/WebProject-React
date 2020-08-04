@@ -9,14 +9,13 @@ import Foods from "./foods";
 import Home from "./home";
 import History from "./history";
 import Alarm from './alarm'
-import User from "./user";
 import exerciseDetails from "./exerciseDetails";
 // import foodDetails from "./foodDetails";
 import NotFound from "./notFound";
 import "./style/App.css";
 import Agreement from "./components/agreement";
 import Footer from "./footer";
-
+import registration from './registration';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/graphql'
@@ -25,6 +24,7 @@ const client = new ApolloClient({
 class Page extends Component {
   render() {
     return (
+<<<<<<< HEAD
       <ApolloProvider client={client}>
         <div className="main_page">
           <NavBar />
@@ -44,6 +44,24 @@ class Page extends Component {
             </Switch>
           </div>
           <Footer />
+=======
+      <div className="main_page">
+        <NavBar />
+        <div className="App">
+          <Switch>
+            <Route path="/recipes" component={Recipes} />
+            <Route path="/foods" component={Foods} />
+            <Route path="/exercises/:id" component={exerciseDetails} />
+            <Route path="/exercises" render={(props) => <Exercises sortBy="newest" {...props} />} />
+            <Route path="/alarm" component={Alarm} />
+            <Route path="/history" component={History} />
+            <Route path="/registration" component={registration} />
+            <Route path="/agreement" component={Agreement} />
+            <Route path="/home" component={Home} />
+            <Route path="/notfound" component={NotFound} />
+            <Redirect to="/home" />
+          </Switch>
+>>>>>>> c8c10b087041d41330b23662f82844e8756c1061
         </div>
       </ApolloProvider>
     );
