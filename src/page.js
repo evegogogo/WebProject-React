@@ -7,14 +7,13 @@ import Foods from "./foods";
 import Home from "./home";
 import History from "./history";
 import Alarm from './alarm'
-import User from "./user";
 import exerciseDetails from "./exerciseDetails";
 // import foodDetails from "./foodDetails";
 import NotFound from "./notFound";
 import "./style/App.css";
 import Agreement from "./components/agreement";
 import Footer from "./footer";
-
+import registration from './registration';
 
 
 class Page extends Component {
@@ -30,7 +29,7 @@ class Page extends Component {
             <Route path="/exercises" render={(props) => <Exercises sortBy="newest" {...props} />} />
             <Route path="/alarm" component={Alarm} />
             <Route path="/history" component={History} />
-            <Route path="/user" component={User} />
+            <Route path="/registration" component={registration} />
             <Route path="/agreement" component={Agreement} />
             <Route path="/home" component={Home} />
             <Route path="/notfound" component={NotFound} />
