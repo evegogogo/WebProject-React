@@ -3,7 +3,8 @@ import { graphql } from 'react-apollo';
 import { getFoods } from "./services/fakeFoodService";
 import Like from "./components/like";
 import AddFood from "./addFood";
-import { getFoodsQuery } from './queries/queries';
+import { getFoodsQuery, deleteFoodMutation } from './queries/queries';
+import * as compose from 'lodash.flowright';
 import "./style/App.css";
 
 
@@ -14,12 +15,21 @@ class Foods extends Component {
   };
 
   handleDelete = food => {
-    const foods = this.state.foods.filter(f => f._id !== food._id);
-    this.setState({ foods });
+    // var data = this.props.data;
+    console.log(this.props);
+    this.props.deleteFoodMutation({
+      variables: {
+        name: food.name,
+        calories: food.calories
+      },
+      refetchQueries: [{query: getFoodsQuery}]
+    });
+    // const foods = this.state.foods.filter(f => f._id !== food._id);
+    // this.setState({ foods });
   };
 
   displayFoods() {
-    var data = this.props.data;
+    var data = this.props.getFoodsQuery;
     if (data.loading) {
       return (<tr><td colSpan="5">Loading data...</td></tr>);
     } else {
@@ -38,7 +48,7 @@ class Foods extends Component {
   };
 
   countFoods() {
-    var data = this.props.data;
+    var data = this.props.getFoodsQuery;
     if (data.loading) {
       return 0;
     } else {
@@ -55,7 +65,6 @@ class Foods extends Component {
   };
 
   render() {
-    
 
     if (this.state.foods.length === 0) return (
       <p className="note">You have no meal records.</p>
@@ -84,4 +93,11 @@ class Foods extends Component {
   }
 }
 
-export default graphql(getFoodsQuery)(Foods);
+export default compose(
+  graphql(getFoodsQuery, {name: "getFoodsQuery"}),
+  graphql(deleteFoodMutation, {name: "deleteFoodMutation"})
+)(Foods);
+
+
+
+// graphql(getFoodsQuery)(Foods);

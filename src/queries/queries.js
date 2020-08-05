@@ -31,5 +31,23 @@ const addFoodMutation = gql`
       }
   }
 `
+const deleteFoodMutation = gql`
+  mutation deleteFood($name: String, $calories: Float) {
+      deleteFood(name: $name, calories: $calories) {
+          id
+      }
+  }
+`
 
-export { getFoodsQuery, getExercisesQuery, addFoodMutation };
+const addExerciseMutation = gql`
+  mutation addExercise($name: String, $calories: Float, $status: String, $due: String) {
+      addExercise(name: $name, calories: $calories, status: $status, due: $due) {
+          name
+          calories
+          status
+          due
+      }
+  }
+`
+
+export { getFoodsQuery, getExercisesQuery, addFoodMutation, addExerciseMutation, deleteFoodMutation };

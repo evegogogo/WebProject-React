@@ -3,7 +3,9 @@ import { getExercises } from "./services/fakeExerciseService";
 import { graphql } from 'react-apollo';
 import Like from "./components/like";
 import { getExercisesQuery } from './queries/queries';
+import AddExercise from "./addExercise";
 import "./style/App.css";
+
 
 
 class Exercises extends Component {
@@ -56,7 +58,6 @@ class Exercises extends Component {
 
   render() {
     
-
     if (this.state.exercises.length === 0) return (
       <p className="note">You have no exercises records.</p>
     );
@@ -79,6 +80,7 @@ class Exercises extends Component {
             {this.displayExercises()}
           </tbody>
         </table>
+        <AddExercise />
       </React.Fragment>
     );
   }
