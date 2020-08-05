@@ -6,6 +6,7 @@ const getFoodsQuery = gql`
       id
       name
       calories
+      status
     }
   }
 `
@@ -50,4 +51,18 @@ const addExerciseMutation = gql`
   }
 `
 
-export { getFoodsQuery, getExercisesQuery, addFoodMutation, addExerciseMutation, deleteFoodMutation };
+const deleteExerciseMutation = gql`
+  mutation deleteExercise($name: String, $calories: Float) {
+      deleteExercise(name: $name, calories: $calories) {
+          id
+      }
+  }
+`
+
+export { getFoodsQuery,
+        getExercisesQuery,
+        addFoodMutation,
+        addExerciseMutation,
+        deleteFoodMutation,
+        deleteExerciseMutation
+     };

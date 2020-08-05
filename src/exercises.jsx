@@ -1,25 +1,33 @@
 import React, { Component } from "react";
-import { getExercises } from "./services/fakeExerciseService";
+// import { getExercises } from "./services/fakeExerciseService";
 import { graphql } from 'react-apollo';
 import Like from "./components/like";
-import { getExercisesQuery } from './queries/queries';
+import { getExercisesQuery, deleteExerciseMutation } from './queries/queries';
 import AddExercise from "./addExercise";
+import * as compose from 'lodash.flowright';
 import "./style/App.css";
 
 
 
 class Exercises extends Component {
   state = {
-    exercises: getExercises()
+    exercises: this.props.getExercisesQuery
   };
 
   handleDelete = exercise => {
-    const exercises = this.state.exercises.filter(e => e._id !== exercise._id);
-    this.setState({ exercises });
+    console.log(this.props);
+    this.props.deleteExerciseMutation({
+      variables: {
+        name: exercise.name,
+        calories: exercise.calories
+      },
+      refetchQueries: [{query: getExercisesQuery}]
+    });
   };
 
   displayExercises() {
-    var data = this.props.data;
+    var data = this.props.getExercisesQuery;
+    console.log(data);
     if (data.loading) {
       return (<tr><td colSpan="6">Loading Exercises...</td></tr>)
     } else {
@@ -39,7 +47,7 @@ class Exercises extends Component {
   };
 
   countExercises() {
-    var data = this.props.data;
+    var data = this.props.getExercisesQuery;
     if (data.loading) {
       return 0;
     } else {
@@ -47,9 +55,20 @@ class Exercises extends Component {
     }
   }
 
+  calculateCalories() {
+    var data = this.props.getExercisesQuery;
+    if (data.loading) {
+      return 0;
+    } else {
+      console.log(data.exercises);
+      const val = data.exercises.filter( (item) => item.status !== 'unfinished' ).reduce((prev, cur) => prev + cur.calories, 0);
+      return val;
+    }
+  }
+
 
   handleLike = (exercise) => {
-    const exercises = [...this.state.exercises];
+    const exercises = [...this.props.getExercisesQuery.exercises];
     const index = exercises.indexOf(exercise);
     exercises[index] = {...exercises[index]};
     exercises[index].liked = !exercises[index].liked;
@@ -64,7 +83,7 @@ class Exercises extends Component {
 
     return (
       <React.Fragment>
-        <p className="note">You have {this.countExercises()} exercises records in the database.</p>
+        <p className="note">You have {this.countExercises()} exercises records in the database. Total calories {this.calculateCalories()} </p>
         <table className="table">
           <thead>
             <tr>
@@ -86,4 +105,11 @@ class Exercises extends Component {
   }
 }
 
-export default graphql(getExercisesQuery)(Exercises);
+export default compose(
+  graphql(getExercisesQuery, {name: "getExercisesQuery"}),
+  graphql(deleteExerciseMutation, {name: "deleteExerciseMutation"})
+)(Exercises);
+
+
+
+// graphql(getExercisesQuery)(Exercises);

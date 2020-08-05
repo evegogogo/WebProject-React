@@ -46,7 +46,7 @@ class AddExercise extends Component {
                 </div>
                 <div className="field">
                     <label>Due</label>
-                    <input type="text" onChange={e => this.setState({status: e.target.value})}/>
+                    <input type="text" onChange={e => this.setState({due: e.target.value})}/>
                 </div>
                 <button>Add</button>
             </form>

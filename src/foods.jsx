@@ -30,6 +30,7 @@ class Foods extends Component {
 
   displayFoods() {
     var data = this.props.getFoodsQuery;
+    console.log(data.foods);
     if (data.loading) {
       return (<tr><td colSpan="5">Loading data...</td></tr>);
     } else {
@@ -56,6 +57,17 @@ class Foods extends Component {
     }
   }
 
+  calculateCalories() {
+    var data = this.props.getFoodsQuery;
+    if (data.loading) {
+      return 0;
+    } else {
+      console.log(data.foods);
+      const val = data.foods.reduce((prev, cur) => prev + cur.calories, 0);
+      return val;
+    }
+  }
+
   handleLike = (food) => {
     const foods = [...this.state.foods];
     const index = foods.indexOf(food);
@@ -72,7 +84,7 @@ class Foods extends Component {
 
     return (
       <React.Fragment>
-        <p className="note">You have {this.countFoods()} meal records in the database.</p>
+        <p className="note">You have {this.countFoods()} meal records in the database. Total calories {this.calculateCalories()} </p>
         <table className="table">
           <thead>
             <tr>
