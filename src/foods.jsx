@@ -1,19 +1,12 @@
 import React, { Component } from "react";
-import { gql } from 'apollo-boost';
 import { graphql } from 'react-apollo';
 import { getFoods } from "./services/fakeFoodService";
 import Like from "./components/like";
+import AddFood from "./addFood";
+import { getFoodsQuery } from './queries/queries';
 import "./style/App.css";
 
-const getFoodsQuery = gql`
-  {
-    foods {
-      id
-      name
-      calories
-    }
-  }
-`
+
 
 class Foods extends Component {
   state = {
@@ -27,7 +20,6 @@ class Foods extends Component {
 
   displayFoods() {
     var data = this.props.data;
-    console.log(data);
     if (data.loading) {
       return (<tr><td colSpan="5">Loading data...</td></tr>);
     } else {
@@ -86,6 +78,7 @@ class Foods extends Component {
             {this.displayFoods()}
           </tbody>
         </table>
+        <AddFood />
       </React.Fragment>
     );
   }

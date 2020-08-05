@@ -1,21 +1,10 @@
 import React, { Component } from "react";
 import { getExercises } from "./services/fakeExerciseService";
-import { gql } from 'apollo-boost';
 import { graphql } from 'react-apollo';
 import Like from "./components/like";
+import { getExercisesQuery } from './queries/queries';
 import "./style/App.css";
 
-const getExercisesQuery = gql`
-  {
-    exercises {
-      id
-      name
-      calories
-      status
-      due
-    }
-  }
-`
 
 class Exercises extends Component {
   state = {
