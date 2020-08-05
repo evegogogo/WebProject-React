@@ -48,9 +48,23 @@ class AlarmClock extends Component {
       if(this.state.currentTime === this.state.alarmTime) {
         alert("Please do your exercise!");
       } else {
-        this.alarmMessage = `Your next exercise is coming in xx minutes`;
+        this.alarmMessage = `Your next exercise is coming in ${ this.calculateMinutes() } minutes`;
       }
     }   
+  }
+
+  calculateMinutes() {
+    const nowArray = this.state.currentTime.split(":");
+    console.log(nowArray);
+    const alarmArray = this.state.alarmTime.split(":");
+    console.log(alarmArray);
+    let nowHour = parseInt(nowArray[0]);
+    let alarmHour = parseInt(alarmArray[0]);
+    let nowMinute = parseInt(nowArray[1]);
+    let alarmMinute = parseInt(alarmArray[1]);
+    let t1 = nowHour * 60 + nowMinute;
+    let t2 = alarmHour * 60 + alarmMinute;
+    return t1 < t2 ? t2 - t1 : (t1 - t2) % 720;
   }
 
   render() {
