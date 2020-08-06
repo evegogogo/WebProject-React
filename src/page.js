@@ -15,9 +15,8 @@ import NotFound from "./notFound";
 
 import Agreement from "./components/agreement";
 import Footer from "./footer";
-import registration from './registration';
+// import registration from './registration';
 import "./style/App.css";
-import LoginButton from "./components/loginAuth";
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 const client = new ApolloClient({
@@ -44,7 +43,6 @@ class Page extends Component {
               <Redirect to="/home" />
             </Switch>
           </div>
-          <LoginButton />
         </div>
         <Footer />
       </ApolloProvider>
