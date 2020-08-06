@@ -6,11 +6,6 @@ import { Auth0Provider, useAuth0 } from "@auth0/auth0-react";
 const Auth0ProviderWithHistory = ({ children }) => {
   const {isAuthenticated} = useAuth0();
   const history = useHistory();
-  if (isAuthenticated) {
-    console.log("Authenticated");
-} else {
-    console.log("X XX");
-}
   const onRedirectCallback = (appState) => {
     
     history.push(appState?.returnTo || window.location.pathname);

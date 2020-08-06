@@ -44,6 +44,7 @@ class Page extends Component {
               <Redirect to="/home" />
             </Switch>
           </div>
+          <LoginButton />
         </div>
         <Footer />
       </ApolloProvider>
@@ -51,4 +52,4 @@ class Page extends Component {
   }
 }
 
-export default Page;
+export default withAuthenticationRequired(Page);
