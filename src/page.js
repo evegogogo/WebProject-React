@@ -17,6 +17,8 @@ import Agreement from "./components/agreement";
 import Footer from "./footer";
 import registration from './registration';
 import "./style/App.css";
+import LoginButton from "./components/loginAuth";
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/graphql'
@@ -36,7 +38,6 @@ class Page extends Component {
               <Route path="/exercises" render={(props) => <Exercises sortBy="newest" {...props} />} />
               <Route path="/alarm" component={Alarm} />
               <Route path="/history" component={History} />
-              <Route path="/registration" component={registration} />
               <Route path="/agreement" component={Agreement} />
               <Route path="/home" component={Home} />
               <Route path="/notfound" component={NotFound} />
