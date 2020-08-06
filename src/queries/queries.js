@@ -7,6 +7,7 @@ const getFoodsQuery = gql`
       name
       calories
       status
+      date
     }
   }
 `
@@ -18,17 +19,18 @@ const getExercisesQuery = gql`
       name
       calories
       status
-      due
+      date
     }
   }
 `
 
 const addFoodMutation = gql`
-  mutation addFood($name: String, $calories: Float, $status: String) {
-      addFood(name: $name, calories: $calories, status: $status) {
+  mutation addFood($name: String, $calories: Float, $status: String, $date: String) {
+      addFood(name: $name, calories: $calories, status: $status, date: $date) {
           name
           calories
           status
+          date
       }
   }
 `
@@ -41,12 +43,12 @@ const deleteFoodMutation = gql`
 `
 
 const addExerciseMutation = gql`
-  mutation addExercise($name: String, $calories: Float, $status: String, $due: String) {
-      addExercise(name: $name, calories: $calories, status: $status, due: $due) {
+  mutation addExercise($name: String, $calories: Float, $status: String, $date: String) {
+      addExercise(name: $name, calories: $calories, status: $status, date: $date) {
           name
           calories
           status
-          due
+          date
       }
   }
 `

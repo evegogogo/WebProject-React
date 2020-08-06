@@ -36,7 +36,7 @@ class Exercises extends Component {
           <td className="col">{e.name}</td>
           <td className="col">{e.calories}</td>
           <td className="col">{e.status}</td>
-          <td className="col">{e.due}</td>
+          <td className="col">{e.date}</td>
           <td>
             <Like liked={e.liked} onClick={() => this.handleLike(e)}/>
           </td>
@@ -90,7 +90,7 @@ class Exercises extends Component {
               <th className="col-name">Name</th>
               <th className="col-name">Calories</th>
               <th className="col-name">Status</th>
-              <th className="col-name">Due</th>
+              <th className="col-name">Date</th>
               <th>Like</th>
               <th></th>
             </tr>

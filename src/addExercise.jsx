@@ -11,7 +11,7 @@ class AddExercise extends Component {
             name: "",
             calories: 0,
             status: "",
-            due: ""
+            date: ""
         };
     }
 
@@ -23,7 +23,7 @@ class AddExercise extends Component {
                 name: this.state.name,
                 calories: this.state.calories,
                 status: this.state.status,
-                due: this.state.due
+                date: this.state.date
             },
             refetchQueries: [{query: getExercisesQuery}]
         });
@@ -45,8 +45,8 @@ class AddExercise extends Component {
                     <input type="text" onChange={e => this.setState({status: e.target.value})}/>
                 </div>
                 <div className="field">
-                    <label>Due</label>
-                    <input type="text" onChange={e => this.setState({due: e.target.value})}/>
+                    <label>Date</label>
+                    <input type="text" onChange={e => this.setState({date: e.target.value})}/>
                 </div>
                 <button>Add</button>
             </form>

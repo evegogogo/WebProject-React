@@ -10,7 +10,8 @@ class AddFood extends Component {
         this.state = {
             name: "",
             calories: 0,
-            status: ""
+            status: "",
+            date: ""
         };
     }
 
@@ -21,7 +22,8 @@ class AddFood extends Component {
             variables: {
                 name: this.state.name,
                 calories: this.state.calories,
-                status: this.state.status
+                status: this.state.status,
+                date: this.state.date
             },
             refetchQueries: [{query: getFoodsQuery}]
         });
@@ -41,6 +43,10 @@ class AddFood extends Component {
                 <div className="field">
                     <label>Status</label>
                     <input type="text" onChange={e => this.setState({status: e.target.value})}/>
+                </div>
+                <div className="field">
+                    <label>Date</label>
+                    <input type="text" onChange={e => this.setState({date: e.target.value})}/>
                 </div>
                 <button>Add</button>
             </form>

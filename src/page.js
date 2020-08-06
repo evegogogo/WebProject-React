@@ -14,7 +14,7 @@ import exerciseDetails from "./exerciseDetails";
 import NotFound from "./notFound";
 
 import Agreement from "./components/agreement";
-// import Footer from "./footer";
+import Footer from "./footer";
 import registration from './registration';
 import "./style/App.css";
 
@@ -44,6 +44,7 @@ class Page extends Component {
             </Switch>
           </div>
         </div>
+        <Footer />
       </ApolloProvider>
     );
   }
