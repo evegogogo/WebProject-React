@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Howl } from 'howler';
 import "./style/App.css";
+
+// https://actions.google.com/sounds/v1/alarms/medium_bell_ringing_near.ogg
+
+toast.configure();
+
+const audio = "https://actions.google.com/sounds/v1/alarms/medium_bell_ringing_near.ogg";
 
 class AlarmClock extends Component {
   constructor() {
@@ -46,7 +55,9 @@ class AlarmClock extends Component {
     } else {
       this.alarmMessage = "Your alarm is set for " + this.state.alarmTime + ".";
       if(this.state.currentTime === this.state.alarmTime) {
-        alert("Please do your exercise!");
+        this.soundPlay(audio);
+        toast.warn('Please do your exercise !', {position: toast.POSITION.BOTTOM_CENTER, autoClose: false});
+        // alert("Please do your exercise!");
       } else {
         this.alarmMessage = `Your next exercise is coming in ${ this.calculateMinutes() } minutes`;
       }
@@ -65,6 +76,14 @@ class AlarmClock extends Component {
     let t1 = nowHour * 60 + nowMinute;
     let t2 = alarmHour * 60 + alarmMinute;
     return t1 < t2 ? t2 - t1 : (t1 - t2) % 720;
+  }
+
+  soundPlay = (src) => {
+    const sound = new Howl({
+      src,
+      html5: true
+    });
+    sound.play();
   }
 
   render() {
