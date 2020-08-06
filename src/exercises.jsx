@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import { getExercises } from "./services/fakeExerciseService";
 import { graphql } from 'react-apollo';
 import Like from "./components/like";
-import { getExercisesQuery, deleteExerciseMutation } from './queries/queries';
+import { getExercisesQuery, deleteExerciseMutation, editExerciseMutation } from './queries/queries';
 import AddExercise from "./addExercise";
 import * as compose from 'lodash.flowright';
 import "./style/App.css";
@@ -68,11 +68,19 @@ class Exercises extends Component {
 
 
   handleLike = (exercise) => {
-    const exercises = [...this.props.getExercisesQuery.exercises];
+    console.log(this.props);
+    /* const exercises = [...this.props.getExercisesQuery.exercises];
     const index = exercises.indexOf(exercise);
     exercises[index] = {...exercises[index]};
     exercises[index].liked = !exercises[index].liked;
-    this.setState({ exercises });
+    this.setState({ exercises }); */
+    this.props.editExerciseMutation({
+      variables: {
+        name: exercise.name,
+        liked: exercise.liked
+      },
+      refetchQueries: [{ query: getExercisesQuery }]
+    });
   };
 
   render() {
@@ -107,7 +115,8 @@ class Exercises extends Component {
 
 export default compose(
   graphql(getExercisesQuery, {name: "getExercisesQuery"}),
-  graphql(deleteExerciseMutation, {name: "deleteExerciseMutation"})
+  graphql(deleteExerciseMutation, {name: "deleteExerciseMutation"}),
+  graphql(editExerciseMutation, {name: "editExerciseMutation"})
 )(Exercises);
 
 

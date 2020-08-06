@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo';
 import { getFoods } from "./services/fakeFoodService";
 import Like from "./components/like";
 import AddFood from "./addFood";
-import { getFoodsQuery, deleteFoodMutation } from './queries/queries';
+import { getFoodsQuery, deleteFoodMutation, editFoodMutation } from './queries/queries';
 import * as compose from 'lodash.flowright';
 import "./style/App.css";
 
@@ -69,12 +69,20 @@ class Foods extends Component {
   }
 
   handleLike = (food) => {
-    const foods = [...this.state.foods];
+    console.log(this.props);
+    this.props.editFoodMutation({
+      variables: {
+        name: food.name,
+        liked: food.liked
+      },
+      refetchQueries: [{ query: getFoodsQuery }]
+    });
+    /* const foods = [...this.state.foods];
     const index = foods.indexOf(food);
     foods[index] = {...foods[index]};
     foods[index].liked = !foods[index].liked;
-    this.setState({ foods });
-  };
+    this.setState({ foods }); */
+  }
 
   render() {
 
@@ -107,7 +115,8 @@ class Foods extends Component {
 
 export default compose(
   graphql(getFoodsQuery, {name: "getFoodsQuery"}),
-  graphql(deleteFoodMutation, {name: "deleteFoodMutation"})
+  graphql(deleteFoodMutation, {name: "deleteFoodMutation"}),
+  graphql(editFoodMutation, {name: "editFoodMutation"})
 )(Foods);
 
 

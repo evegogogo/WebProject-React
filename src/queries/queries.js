@@ -8,6 +8,7 @@ const getFoodsQuery = gql`
       calories
       status
       date
+      liked
     }
   }
 `
@@ -20,17 +21,19 @@ const getExercisesQuery = gql`
       calories
       status
       date
+      liked
     }
   }
 `
 
 const addFoodMutation = gql`
-  mutation addFood($name: String, $calories: Float, $status: String, $date: String) {
-      addFood(name: $name, calories: $calories, status: $status, date: $date) {
+  mutation addFood($name: String, $calories: Float, $status: String, $date: String, $liked: Boolean) {
+      addFood(name: $name, calories: $calories, status: $status, date: $date, liked: $liked) {
           name
           calories
           status
           date
+          liked
       }
   }
 `
@@ -43,12 +46,13 @@ const deleteFoodMutation = gql`
 `
 
 const addExerciseMutation = gql`
-  mutation addExercise($name: String, $calories: Float, $status: String, $date: String) {
-      addExercise(name: $name, calories: $calories, status: $status, date: $date) {
+  mutation addExercise($name: String, $calories: Float, $status: String, $date: String, $liked: Boolean) {
+      addExercise(name: $name, calories: $calories, status: $status, date: $date, liked: $liked) {
           name
           calories
           status
           date
+          liked
       }
   }
 `
@@ -61,10 +65,28 @@ const deleteExerciseMutation = gql`
   }
 `
 
+const editFoodMutation = gql`
+  mutation editFood($name: String, $liked: Boolean) {
+      editFood(name: $name, liked: $liked) {
+          liked
+      }
+  }
+`
+
+const editExerciseMutation = gql`
+  mutation editExercise($name: String, $liked: Boolean) {
+      editExercise(name: $name, liked: $liked) {
+          liked
+      }
+  }
+`
+
 export { getFoodsQuery,
         getExercisesQuery,
         addFoodMutation,
         addExerciseMutation,
         deleteFoodMutation,
-        deleteExerciseMutation
+        deleteExerciseMutation,
+        editFoodMutation,
+        editExerciseMutation
      };
