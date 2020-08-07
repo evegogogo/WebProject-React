@@ -39,27 +39,27 @@ Menglin Shen:
 
 * Login
 
-  ![login](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\iter2\login.png)
+  ![login](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/login.png)
 
 * The landing page
 
-  ![home](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\iter2\home.png)
+  ![home](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/home.png)
 
 * Recipes
 
-  ![food](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\iter2\food.png)
+  ![food](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/food.png)
 
 * Exercise
 
-  ![exercise](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\iter2\exercise.png)
+  ![exercise](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/exercise.png)
 
 * Alarm
 
-  ![alarm](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\iter2\alarm.png)
+  ![alarm](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/alarm.png)
 
 * History
 
-  ![history](C:\Users\shenm\Desktop\CS\NEU\Summer20\CS5610\Group\iter2\history.png)
+  ![history](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_CrazyFit_UI/blob/master/readme_images/history.png)
 
 ### Iteration 1
 
