@@ -20,7 +20,7 @@ import "./style/App.css";
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql'
+  uri: 'https://crazyfitapi.herokuapp.com/graphql'
 });
 
 class Page extends Component {

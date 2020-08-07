@@ -14,7 +14,6 @@ const Home = () => (
           <div className="content">
             <div>Fitness starts with how <span>smart</span> you <span>eat</span></div>
             <div>and <span>exercise</span></div>
-            <div className="button slide_button"><Link to="#">Start for free</Link></div>
           </div>
         </div>
       </div>
@@ -46,7 +45,7 @@ const Home = () => (
                 <img className="icon_image" src="/images/clipart.png" alt="" />
               </div>
               <div className="icon_box_title">
-                <NavLink className="icon_box_title" to="/exercise">
+                <NavLink className="icon_box_title" to="/exercises">
                   Record Your Exercise
                 </NavLink>
               </div>
