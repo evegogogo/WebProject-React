@@ -17,7 +17,6 @@ class AddFood extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        
         this.props.addFoodMutation({
             variables: {
                 name: this.state.name,
