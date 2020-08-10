@@ -42,12 +42,11 @@ const NavBar = () => {
             {context.token && <NavLink className="nav-item nav-link" to="/history">
               History
             </NavLink>}
-            {!context.token && <NavLink className="nav-item nav-link" to="/authPage">
+            {context.token ? <button onClick={context.logout}>Logout</button> : <NavLink className="nav-item nav-link" to="/authPage">
               User
             </NavLink>}
           </div>
           {/* <LoginButton /> */}
-
         </div>
       </nav>
         )

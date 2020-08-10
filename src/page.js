@@ -49,7 +49,7 @@ class Page extends Component {
             <NavBar />
             <div className="App">
               <Switch>
-                {!this.state.token && <Redirect from="/" to="/authPage" exact />}
+                
                 <Route path="/recipes" component={Recipes} />
                 {this.state.token &&<Route path="/foods" component={Foods} />}
                 <Route path="/exercises/:id" component={exerciseDetails} />
@@ -60,6 +60,7 @@ class Page extends Component {
                 <Route path="/home" component={Home} />
                 {!this.state.token &&<Route path="/authPage" component={authPage} />}
                 <Route path="/notfound" component={NotFound} />
+                {!this.state.token && <Redirect to="/authPage" exact />}
                 <Redirect to="/home" />
               </Switch>
             </div>

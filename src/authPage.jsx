@@ -50,7 +50,8 @@ class authPage extends Component {
                     mutation {
                         addUser(email: "${email}", password: "${password}") {
                             id
-                            email
+                            token
+                            tokenExpiration
                         }
                     }
                 `
@@ -71,11 +72,18 @@ class authPage extends Component {
             return res.json();
         })
         .then(resData => {
-            if (resData.data.login.token) {
+            console.log(resData);
+            if (this.state.isLogin && resData.data.login.token) {
                 this.context.login(
                     resData.data.login.token,
                     resData.data.login.id,
                     resData.data.login.tokenExpiration
+                );
+            } else if (!this.state.isLogin && resData.data.addUser.token) {
+                this.context.login(
+                    resData.data.addUser.token,
+                    resData.data.addUser.id,
+                    resData.data.addUser.tokenExpiration
                 );
             }
         })
