@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import LoginButton from "./components/loginAuth";
+// import LoginButton from "./components/loginAuth";
+// import authPage from "./authPage";
 
 const NavBar = () => {
   return (
@@ -36,9 +37,12 @@ const NavBar = () => {
           <NavLink className="nav-item nav-link" to="/history">
             History
           </NavLink>
-          
+          <NavLink className="nav-item nav-link" to="/authPage">
+            User
+          </NavLink>
         </div>
-        <LoginButton />
+        {/* <LoginButton /> */}
+
       </div>
     </nav>
   );

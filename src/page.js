@@ -16,11 +16,13 @@ import NotFound from "./notFound";
 import Agreement from "./components/agreement";
 import Footer from "./footer";
 // import registration from './registration';
+import authPage from "./authPage";
 import "./style/App.css";
-import { withAuthenticationRequired } from '@auth0/auth0-react';
+// import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 const client = new ApolloClient({
   uri: 'https://crazyfitapi.herokuapp.com/graphql'
+  // uri: 'http://localhost:5000/graphql'
 });
 
 class Page extends Component {
@@ -39,6 +41,7 @@ class Page extends Component {
               <Route path="/history" component={History} />
               <Route path="/agreement" component={Agreement} />
               <Route path="/home" component={Home} />
+              <Route path="/authPage" component={authPage} />
               <Route path="/notfound" component={NotFound} />
               <Redirect to="/home" />
             </Switch>
@@ -50,4 +53,4 @@ class Page extends Component {
   }
 }
 
-export default withAuthenticationRequired(Page);
+export default Page; // withAuthenticationRequired(Page);
