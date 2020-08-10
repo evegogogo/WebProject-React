@@ -17,6 +17,7 @@ import Agreement from "./components/agreement";
 import Footer from "./footer";
 // import registration from './registration';
 import authPage from "./authPage";
+import AuthConext from './context/auth-context';
 import "./style/App.css";
 // import { withAuthenticationRequired } from '@auth0/auth0-react';
 
@@ -26,26 +27,43 @@ const client = new ApolloClient({
 });
 
 class Page extends Component {
+
+  state = {
+    token: null,
+    id: null,
+  }
+
+  login = (token, id, tokenExpiration) => {
+    this.setState({ token: token, id: id })
+  }
+
+  logout = () => {
+    this.setState({ token: null, id: null })
+  }
+
   render() {
     return (
       <ApolloProvider client={client}>
         <div className="main_page">
-          <NavBar />
-          <div className="App">
-            <Switch>
-              <Route path="/recipes" component={Recipes} />
-              <Route path="/foods" component={Foods} />
-              <Route path="/exercises/:id" component={exerciseDetails} />
-              <Route path="/exercises" render={(props) => <Exercises sortBy="newest" {...props} />} />
-              <Route path="/alarm" component={Alarm} />
-              <Route path="/history" component={History} />
-              <Route path="/agreement" component={Agreement} />
-              <Route path="/home" component={Home} />
-              <Route path="/authPage" component={authPage} />
-              <Route path="/notfound" component={NotFound} />
-              <Redirect to="/home" />
-            </Switch>
-          </div>
+          <AuthConext.Provider value={{token: this.state.token, id: this.state.id, login: this.login, logout: this.logout }}>
+            <NavBar />
+            <div className="App">
+              <Switch>
+                {!this.state.token && <Redirect from="/" to="/authPage" exact />}
+                <Route path="/recipes" component={Recipes} />
+                {this.state.token &&<Route path="/foods" component={Foods} />}
+                <Route path="/exercises/:id" component={exerciseDetails} />
+                {this.state.token && <Route path="/exercises" render={(props) => <Exercises sortBy="newest" {...props} />} />}
+                {this.state.token && <Route path="/alarm" component={Alarm} />}
+                {this.state.token && <Route path="/history" component={History} />}
+                <Route path="/agreement" component={Agreement} />
+                <Route path="/home" component={Home} />
+                {!this.state.token &&<Route path="/authPage" component={authPage} />}
+                <Route path="/notfound" component={NotFound} />
+                <Redirect to="/home" />
+              </Switch>
+            </div>
+          </AuthConext.Provider>
         </div>
         <Footer />
       </ApolloProvider>
