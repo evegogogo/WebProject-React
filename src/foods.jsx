@@ -5,11 +5,13 @@ import Like from "./components/like";
 import AddFood from "./addFood";
 import { getFoodsQuery, deleteFoodMutation, editFoodMutation } from './queries/queries';
 import * as compose from 'lodash.flowright';
+import AuthContext from './context/auth-context';
 import "./style/App.css";
 
 
 
 class Foods extends Component {
+  static contextType = AuthContext;
   state = {
     foods: getFoods()
   };
@@ -17,6 +19,7 @@ class Foods extends Component {
   handleDelete = food => {
     // var data = this.props.data;
     console.log(this.props);
+    
     this.props.deleteFoodMutation({
       variables: {
         name: food.name,
@@ -31,10 +34,14 @@ class Foods extends Component {
   displayFoods() {
     var data = this.props.getFoodsQuery;
     console.log(data.foods);
+    const userId = this.context.id;
+    console.log("user id is: " + userId);
     if (data.loading) {
       return (<tr><td colSpan="5">Loading data...</td></tr>);
     } else {
-      return (data.foods.map(f => (
+      const dataaa = data.foods.filter(f => {return f.user === null ? "" : f.user.id === userId});
+      console.log("filter data is: " + dataaa);
+      return (dataaa.map(f => (
         <tr key={f.id}>
           <td className="col">{f.name}</td>
           <td className="col">{f.calories}</td>
@@ -50,20 +57,25 @@ class Foods extends Component {
 
   countFoods() {
     var data = this.props.getFoodsQuery;
+    const userId = this.context.id;
+    
     if (data.loading) {
       return 0;
     } else {
-      return data.foods.length;
+      const dataaa = data.foods.filter(f => {return f.user === null ? "" : f.user.id === userId});
+      return dataaa.length;
     }
   }
 
   calculateCalories() {
     var data = this.props.getFoodsQuery;
+    const userId = this.context.id;
     if (data.loading) {
       return 0;
     } else {
       console.log(data.foods);
-      const val = data.foods.reduce((prev, cur) => prev + cur.calories, 0);
+      const dataaa = data.foods.filter(f => {return f.user === null ? "" : f.user.id === userId});
+      const val = dataaa.reduce((prev, cur) => prev + cur.calories, 0);
       return val;
     }
   }

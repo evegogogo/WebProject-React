@@ -6,6 +6,9 @@ const getFoodsQuery = gql`
       id
       name
       calories
+      user {
+        id
+      }
       status
       date
       liked
@@ -27,10 +30,13 @@ const getExercisesQuery = gql`
 `
 
 const addFoodMutation = gql`
-  mutation addFood($name: String, $calories: Float, $status: String, $date: String, $liked: Boolean) {
-      addFood(name: $name, calories: $calories, status: $status, date: $date, liked: $liked) {
+  mutation addFood($name: String, $calories: Float, $userId: ID, $status: String, $date: String, $liked: Boolean) {
+      addFood(name: $name, calories: $calories, userId: $userId, status: $status, date: $date, liked: $liked) {
           name
           calories
+          user {
+            id
+          }
           status
           date
           liked
