@@ -5,11 +5,13 @@ import Like from "./components/like";
 import { getExercisesQuery, deleteExerciseMutation, editExerciseMutation } from './queries/queries';
 import AddExercise from "./addExercise";
 import * as compose from 'lodash.flowright';
+import AuthContext from './context/auth-context';
 import "./style/App.css";
 
 
 
 class Exercises extends Component {
+  static contextType = AuthContext;
   state = {
     exercises: this.props.getExercisesQuery
   };
@@ -28,10 +30,13 @@ class Exercises extends Component {
   displayExercises() {
     var data = this.props.getExercisesQuery;
     console.log(data);
+    const userId = this.context.id;
     if (data.loading) {
       return (<tr><td colSpan="6">Loading Exercises...</td></tr>)
     } else {
-      return (data.exercises.map(e => (
+      const dataaa = data.exercises.filter(e => {return e.user === null ? "" : e.user.id === userId});
+      console.log(dataaa);
+      return (dataaa.map(e => (
         <tr key={e.id}>
           <td className="col">{e.name}</td>
           <td className="col">{e.calories}</td>
@@ -48,20 +53,24 @@ class Exercises extends Component {
 
   countExercises() {
     var data = this.props.getExercisesQuery;
+    const userId = this.context.id;
     if (data.loading) {
       return 0;
     } else {
-      return data.exercises.length;
+      const dataaa = data.exercises.filter(e => {return e.user === null ? "" : e.user.id === userId});
+      return dataaa.length;
     }
   }
 
   calculateCalories() {
     var data = this.props.getExercisesQuery;
+    const userId = this.context.id;
     if (data.loading) {
       return 0;
     } else {
       console.log(data.exercises);
-      const val = data.exercises.filter( (item) => item.status !== 'unfinished' ).reduce((prev, cur) => prev + cur.calories, 0);
+      const dataaa = data.exercises.filter(e => {return e.user === null ? "" : e.user.id === userId});
+      const val = dataaa.filter( (item) => item.status !== 'unfinished' ).reduce((prev, cur) => prev + cur.calories, 0);
       return val;
     }
   }
@@ -91,7 +100,7 @@ class Exercises extends Component {
 
     return (
       <React.Fragment>
-        <p className="note">You have {this.countExercises()} exercises records in the database. Total calories {this.calculateCalories()} </p>
+        <p className="note">You have {this.countExercises()} exercises records in the database. Your Total Consumed Calories: {this.calculateCalories()} </p>
         <table className="table">
           <thead>
             <tr>

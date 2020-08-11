@@ -47,7 +47,7 @@ class Foods extends Component {
           <td className="col">{f.calories}</td>
           <td className="col">{f.status}</td>
           <td>
-            <Like liked={f.liked} onClick={() => this.handleLike(f)}/>
+            <Like liked={data.foods[this.getIndex(data.foods, f)].liked} onClick={() => this.handleLike(data.foods[this.getIndex(data.foods, f)])}/>
           </td>
           <td className="col"><button onClick={() => this.handleDelete(f)} className="btn btn-danger btn-sm">Delete</button></td>
         </tr>
@@ -82,6 +82,7 @@ class Foods extends Component {
 
   handleLike = (food) => {
     console.log(this.props);
+    
     this.props.editFoodMutation({
       variables: {
         name: food.name,
@@ -94,6 +95,10 @@ class Foods extends Component {
     foods[index] = {...foods[index]};
     foods[index].liked = !foods[index].liked;
     this.setState({ foods }); */
+  }
+
+  getIndex = (foods, f) => {
+    return foods.indexOf(f);
   }
 
   render() {

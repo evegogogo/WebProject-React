@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import * as compose from 'lodash.flowright';
 import { getExercisesQuery, addExerciseMutation } from './queries/queries';
+import AuthContext from './context/auth-context';
 
 class AddExercise extends Component {
+    static contextType = AuthContext;
     constructor(props) {
         super(props);
         this.state = {
@@ -17,11 +19,12 @@ class AddExercise extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        
+        const idd = this.context.id;
         this.props.addExerciseMutation({
             variables: {
                 name: this.state.name,
                 calories: this.state.calories,
+                userId: idd ? idd : "",
                 status: this.state.status,
                 date: this.state.date
             },

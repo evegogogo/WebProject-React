@@ -43,7 +43,7 @@ const NavBar = () => {
               History
             </NavLink>}
             {context.token ? <button onClick={context.logout}>Logout</button> : <NavLink className="nav-item nav-link" to="/authPage">
-              User
+              Login
             </NavLink>}
           </div>
           {/* <LoginButton /> */}

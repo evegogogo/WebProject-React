@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { getFoodsQuery, getExercisesQuery } from './queries/queries';
 import { graphql } from 'react-apollo';
 import * as compose from 'lodash.flowright';
+import AuthContext from './context/auth-context';
 
 class History extends Component {
+  static contextType = AuthContext;
   state = {
     totalCalories: 0
   }
@@ -21,10 +23,11 @@ class History extends Component {
       const info2 = this.sortByDate(exercisesInfo.exercises);
       const info3 = [...info, ...info2];
       const sorted = this.sortByDate(info3);
+      const userId = this.context.id;
       // const val = sorted.reduce((prev, cur) => prev + cur.calories, 0);
       // this.setState({totalCalories : val});
       console.log("info3:", sorted);
-      return (sorted.map(e => (
+      return (sorted.filter(i => {return i.user === null ? "" : i.user.id === userId}).map(e => (
         <tr key={e.id}>
           <td className="col">{e.date}</td>
           <td className="col">{ this.getType(e) === 'food' ? e.status + " " + e.name : "None" }</td>
@@ -45,12 +48,13 @@ class History extends Component {
 
   displayExercise() {
     var exercisesInfo = this.props.getExercisesQuery;
+    const userId = this.context.id;
     console.log(exercisesInfo);
     if (exercisesInfo.loading) {
       console.log(0);
     } else {
       const info = this.sortByDate(exercisesInfo.exercises);
-      return (info.map(e => (
+      return (info.filter(i => {return i.user === null ? "" : i.user.id === userId}).map(e => (
         <tr key={e.id}>
           <td className="col">{e.name}</td>
           <td className="col">{e.calories}</td>
@@ -78,6 +82,7 @@ class History extends Component {
   calculateTotal() {
     var foodsInfo = this.props.getFoodsQuery;
     var exercisesInfo = this.props.getExercisesQuery;
+    const userId = this.context.id;
     if (foodsInfo.loading || exercisesInfo.loading) {
       console.log("loading data");
     } else {
@@ -85,7 +90,7 @@ class History extends Component {
       const info2 = this.sortByDate(exercisesInfo.exercises);
       const info3 = [...info, ...info2];
       const sorted = this.sortByDate(info3);
-      const val = sorted.reduce((prev, cur) => this.getType(cur) === 'food' ? prev + cur.calories : prev - cur.calories, 0);
+      const val = sorted.filter(i => {return i.user === null ? "" : i.user.id === userId}).reduce((prev, cur) => this.getType(cur) === 'food' ? prev + cur.calories : prev - cur.calories, 0);
       return val;
     }
   }
@@ -94,7 +99,7 @@ class History extends Component {
 
     return ( 
       <React.Fragment>
-        <p className="note">Your recent total net calories are {this.calculateTotal()} </p>
+        <p className="note">Your Recent Total Net Calories Are: {this.calculateTotal()} </p>
         <div>
         <table className="table table-hover">
           <thead>
