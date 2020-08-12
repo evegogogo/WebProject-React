@@ -74,9 +74,9 @@ class AddFood extends Component {
                     <label>Date</label>
                     <br/>
                     <input 
-                        type="text" 
+                        type="date" 
                         placeholder="Enter a valid date format" 
-                        style={{ width:"300px" }} 
+                        style={{ width:"180px" }} 
                         onChange={e => this.setState({date: e.target.value})}
                     />
                 </div>

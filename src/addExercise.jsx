@@ -54,7 +54,7 @@ class AddExercise extends Component {
                 <div className="field">
                     <label>Date</label>
                     <br/>
-                    <input type="text" placeholder="Enter a valid date format" style={{ width:"300px" }} onChange={e => this.setState({date: e.target.value})}/>
+                    <input type="date" placeholder="Enter a valid date format" style={{ width:"180px" }} onChange={e => this.setState({date: e.target.value})}/>
                 </div>
                 <br/>
                 <button className="add-button">Add</button>

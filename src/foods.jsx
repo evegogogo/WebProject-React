@@ -113,7 +113,7 @@ class Foods extends Component {
 
     return (
       <React.Fragment>
-        <p className="note">You have {this.countFoods()} meal records in the database. Total calories {this.calculateCalories()} </p>
+        <p className="note">You have {this.countFoods()} meal records in the database.  The total calories are {this.calculateCalories()} </p>
         <table className="table">
           <thead>
             <tr>

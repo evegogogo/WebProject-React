@@ -30,8 +30,8 @@ class History extends Component {
       return (sorted.filter(i => {return i.user === null ? "" : i.user.id === userId}).map(e => (
         <tr key={e.id}>
           <td className="col">{e.date}</td>
-          <td className="col">{ this.getType(e) === 'food' ? e.status + " " + e.name : "None" }</td>
-          <td className="col">{this.getType(e) === 'exercise' ? e.status + " " + e.name : "None"}</td>
+          <td className="col">{ this.getType(e) === 'food' ? e.name + " " + e.status : "None" }</td>
+          <td className="col">{this.getType(e) === 'exercise' ? e.name + " " + e.status : "None"}</td>
           <td className="col">{this.getType(e) === 'food' ? e.calories : - e.calories }</td>
         </tr>
       )));
@@ -99,7 +99,11 @@ class History extends Component {
 
     return ( 
       <React.Fragment>
-        <p className="note">Your Recent Total Net Calories Are: {this.calculateTotal()} </p>
+        <p className="note">
+          Your Recent Total Net Calories Are: {this.calculateTotal()}
+          <span />
+          {this.calculateTotal() > 0 ? "       You should do more exercises" : "        Well done!"}
+        </p>
         <div>
         <table className="table table-hover">
           <thead>
