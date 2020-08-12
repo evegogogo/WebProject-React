@@ -26,8 +26,8 @@ import Join from "./join";
 // import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 const client = new ApolloClient({
-  // uri: 'https://crazyfitapi.herokuapp.com/graphql'
-  uri: 'http://localhost:5000/graphql'
+  uri: 'https://crazyfitapi.herokuapp.com/graphql'
+  // uri: 'http://localhost:5000/graphql'
 });
 
 class Page extends Component {
