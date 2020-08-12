@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900");
+
+.faqs_container{
+    height: 1300px;
+    display: grid;
+    grid-template-rows: 20% 80%;
+    row-gap: 100px;
+}
+
+.background_image_box{
+    position: relative;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+.question_title{
+    display: grid;
+    align-items: center;
+    font-family: Muli;
+    padding-bottom: 3em;
+}
+
+.question_title h2{
+    font-size: 50px;
+    font-weight: 700;
+    margin-top: 1em;
+}
+
+.questions{
+    font-family: Muli;
+    text-align: left;
+    line-height: 30px;
+}
+
+.questions span{
+    color: black;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: none;
+}
+
+.questions p{
+    font-size: 25px;
+    font-weight: 400;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}

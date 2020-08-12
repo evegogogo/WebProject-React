@@ -12,8 +12,6 @@ import Alarm from './alarm'
 import exerciseDetails from "./exerciseDetails";
 // import foodDetails from "./foodDetails";
 import NotFound from "./notFound";
-import About from "./about";
-import Contact from "./contact";
 import Agreement from "./components/agreement";
 import Footer from "./footer";
 // import registration from './registration';
@@ -21,6 +19,10 @@ import authPage from "./authPage";
 import AuthConext from './context/auth-context';
 import Cookies from 'js-cookie';
 import "./style/App.css";
+import About from "./about";
+import Contact from "./contact";
+import FAQS from "./faqs";
+import Join from "./join";
 // import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 const client = new ApolloClient({
@@ -69,6 +71,8 @@ class Page extends Component {
               <Switch>
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={Contact} />
+                <Route path="/faqs" component={FAQS} />
+                <Route path="/join" component={Join} />
                 <Route path="/recipes" component={Recipes} />
                 {this.state.token && <Route path="/foods" component={Foods} />}
                 <Route path="/exercises/:id" component={exerciseDetails} />
@@ -85,8 +89,7 @@ class Page extends Component {
             </div>
             <Footer />
           </AuthConext.Provider>
-        </div>
-        
+        </div>       
       </ApolloProvider>
     );
   }
