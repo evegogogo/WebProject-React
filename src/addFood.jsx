@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo';
 import * as compose from 'lodash.flowright';
 import { getFoodsQuery, addFoodMutation } from './queries/queries';
 import AuthContext from './context/auth-context';
+import './style/addFood.css';
 // import { Form } from 'react-bootstrap';
 
 class AddFood extends Component {
@@ -32,28 +33,55 @@ class AddFood extends Component {
             },
             refetchQueries: [{query: getFoodsQuery}]
         });
+        e.target.reset();
     }
+
     
     render() { 
         return ( 
             <form id="add-Food" onSubmit={this.handleSubmit.bind(this)}>
                 <div className="field">
                     <label>Food Name</label>
-                    <input type="text" placeholder="Enter a valid food name" onChange={e => this.setState({name: e.target.value})}/>
+                    <br/>
+                    <input 
+                        type="text"
+                        placeholder="Enter a valid food name"
+                        style={{ width:"300px" }} 
+                        onChange={e => this.setState({name: e.target.value})}
+                    />
                 </div>
                 <div className="field">
                     <label>Calories</label>
-                    <input type="number" placeholder="Enter a valid number of calories" onChange={e => this.setState({calories: parseFloat(e.target.value)})}/>
+                    <br/>
+                    <input 
+                        type="number" 
+                        placeholder="Enter a valid number of calories" 
+                        style={{ width:"300px" }} 
+                        onChange={e => this.setState({calories: parseFloat(e.target.value)})}
+                    />
                 </div>
                 <div className="field">
                     <label>Status</label>
-                    <input type="text" onChange={e => this.setState({status: e.target.value})}/>
+                    <br/>
+                    <input 
+                        type="text" 
+                        placeholder="Breakfast, Lunch or Dinner?" 
+                        style={{ width:"300px" }} 
+                        onChange={e => this.setState({status: e.target.value})}
+                    />
                 </div>
                 <div className="field">
                     <label>Date</label>
-                    <input type="text" placeholder="Enter a valid date" onChange={e => this.setState({date: e.target.value})}/>
+                    <br/>
+                    <input 
+                        type="text" 
+                        placeholder="Enter a valid date format" 
+                        style={{ width:"300px" }} 
+                        onChange={e => this.setState({date: e.target.value})}
+                    />
                 </div>
-                <button>Add</button>
+                <br/>
+                <button className="add-button">Add</button>
             </form> 
             
          );
