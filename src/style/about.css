@@ -1,8 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900");
 
+* {
+    box-sizing: border-box;
+}
+
 .about_container{
     -webkit-box-align: center!important;
     align-items: center!important;
+    height:100%;
 }
 
 .title_box{
@@ -17,6 +22,7 @@
     font-size: 60px;
     font-family: Muli;
     font-weight: 800;
+    color: brown;
     text-transform: uppercase;
     line-height: 0.75;
 }
@@ -24,8 +30,9 @@
 .about_row{
     display: flex;
     flex-wrap: wrap;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    padding-bottom: 1rem;
     margin-right: auto;
     margin-left: auto;
 }
@@ -34,11 +41,10 @@
     width: 50%;
     display: flex;
     flex-wrap: wrap;
-    align-content: left;
     text-align: left;
     min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 1rem;
+    padding-left: 2rem;
     margin-bottom: 0!important;
 }
 
@@ -46,9 +52,9 @@
     text-transform: uppercase;
     font-family: Muli;
     font-weight: 700;
+    color: brown;
     text-align: center;
     margin-top: 5rem!important;
-    margin-bottom: 1rem!important;
 }
 
 .content_body{
@@ -68,6 +74,6 @@
 .about_image_box{
     display: flex;
     vertical-align: middle;
-    width: 540px;
+    width: 5rem;
     background-size: cover;
 }

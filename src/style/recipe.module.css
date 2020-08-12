@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .recipe {
     border-radius: 10px;
     box-shadow: 0px 5px 20px rgb(71, 71, 50);

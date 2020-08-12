@@ -1,48 +1,36 @@
 @import url("https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900");
+  
+* {
+    box-sizing: border-box;
+}
 
 .home_container{
-    height: 1600px;
+    height: 1300px;
     display: grid;
+    grid-template-rows: 40% 60%;
+    row-gap: 3rem;
     font-family: Muli;
 }
 
 .slide{
+    display:inline-block;
     position: relative;
     text-align: center;
-    height: auto;
     color: white;
+    margin: 0 auto;
 }
 
 span{
-    font-size: 60px;
+    font-size: 4rem;
     font-weight: 900;
     color: #ff9908;
     text-transform: uppercase;
     line-height: 0.75;
-    margin-left: 7px;
-}
-
-.slide_button {
-    margin-top: 54px;
-}
-
-.button a {
-    display: block;
-    position: relative;
-    width: 50%;
-    font-size: 16px;
-    font-weight: 500;
-    color: #ffffff;
-    background: #ffa07f;
-    line-height: 60px;
-}
-
-.button {
-    text-align: center;
+    margin-left: 1rem;
 }
 
 .background_image_box {
-    height: 200px;
+    height: 2rem;
 }
 
 .background_image{
@@ -57,15 +45,15 @@ span{
 
 .image_text_container {
     position: absolute;
-    top: 45%;
-    left: 65%;
+    top: 60%;
+    left: 60%;
     transform: translate(-50%, -50%);
 }
 
 .content{
     display: block;
     position: relative;
-    font-size: 50px;
+    font-size: 3.5rem;
     line-height: 1.3;
     color: black;
 }
@@ -76,13 +64,13 @@ span{
     flex-wrap: wrap;
     width: 100%;
     padding: 4.5em 2.25em;
-    padding-top: 6em;
     flex-direction: column !important;
     box-sizing: inherit;
 }
 
 .title_box{
-    display: flex;
+    display: block;
+    margin-top: 1rem;
     align-items: center;
     min-width: 18em;
 }
@@ -96,6 +84,7 @@ span{
 .features_title h2 {
     font-size: 3rem;
     font-weight: 800;
+    color:brown;
     padding: 0 7.5em;
 }
 
@@ -117,10 +106,11 @@ span{
     margin-top: 50px;
     font-size: 30px;
     font-weight: 700;
-    color: black;
+    color: brown;
 }
 
 .icon_box_text{
     margin-top: 14px;
     font-size: 20px;
 }
+

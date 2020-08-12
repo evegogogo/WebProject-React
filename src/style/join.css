@@ -1,15 +1,19 @@
 @import url("https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900");
 
+* {
+    box-sizing: border-box;
+}
+
 .join_container{
-    height: 1200px;
+    height: 100%;
     display: grid;
     grid-template-rows: 50% 20% 30%;
-    row-gap: 100px;
+    row-gap: 8rem;
     font-family: Muli;
 }
 
 .social_container{    
-    row-gap: 50px;
+    row-gap: 5rem;
 }
 
 .social_row{
@@ -28,7 +32,8 @@
 .social_title h2{
     font-family: Muli;
     font-weight: 700;
-    font-size: 50px;
+    font-size: 3rem;
+    color: brown;
     text-align: center;
     padding: 0 7.5em;
 }
@@ -40,8 +45,12 @@
 }
 
 .icon_image{
-    max-width: 200px;
+    max-width: 10rem;
+    padding-bottom: 2rem;
 }
-h2 {
+
+.social_col h2 {
     color: brown;
+    font-family: Muli;
+    font-weight: 700;
 }
