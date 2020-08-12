@@ -33,7 +33,6 @@ class Page extends Component {
   state = {
     token: null,
     id: null,
-    cookie: null
   }
 
   login = (token, id, tokenExpiration) => {
@@ -41,11 +40,23 @@ class Page extends Component {
   }
 
   logout = () => {
+    Cookies.remove('token');
+    Cookies.remove('id');
+    Cookies.remove('tokenExpiration');
     this.setState({ token: null, id: null })
   }
 
-  readCookie = () => {
-    this.setState({cookie: Cookies.get('token')});
+  componentDidMount() {
+    const token = Cookies.get('token');
+        const id = Cookies.get('id');
+        const tokenExpiration = Cookies.get('tokenExpiration');
+        if (token) {
+            this.login(
+                token,
+                id,
+                tokenExpiration
+            );
+        }
   }
 
   render() {

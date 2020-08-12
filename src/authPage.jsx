@@ -16,6 +16,7 @@ class authPage extends Component {
         this.password = React.createRef();
     }
 
+
     switchModeHandler = (e) => {
         this.setState(prevState => {
             return { isLogin: !prevState.isLogin };
@@ -72,19 +73,18 @@ class authPage extends Component {
             }
             return res.json();
         })
+
         .then(resData => {
             console.log(resData);
             if (this.state.isLogin && resData.data.login.token) {
-                localStorage.setItem('jwt', resData.data.login.token);
-                console.log(localStorage.getItem('jwt'));
                 this.context.login(
                     resData.data.login.token,
                     resData.data.login.id,
                     resData.data.login.tokenExpiration
                 );
-                this.context.id = resData.data.login.id;
-                this.context.token = resData.data.login.token;
-                Cookies.set("token", this.context.token);
+                Cookies.set("token", resData.data.login.token);
+                Cookies.set("id", resData.data.login.id);
+                Cookies.set("tokenExpiration", resData.data.login.tokenExpiration);
                 console.log([this.context.id, this.context.token]);
                 
             } else if (!this.state.isLogin && resData.data.addUser.token) {
@@ -93,8 +93,10 @@ class authPage extends Component {
                     resData.data.addUser.id,
                     resData.data.addUser.tokenExpiration
                 );
+                Cookies.set("token", resData.data.addUser.token);
+                Cookies.set("id", resData.data.addUser.id);
+                Cookies.set("tokenExpiration", resData.data.addUser.tokenExpiration);
             }
-            console.log(document.cookie);
         })
         .catch(err => {
             console.log(err);
