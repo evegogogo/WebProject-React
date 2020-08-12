@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900");
+
+.about_container{
+    -webkit-box-align: center!important;
+    align-items: center!important;
+}
+
+.title_box{
+    margin-top: 80px;
+    margin-bottom: 60px;
+    margin-left: auto;
+    text-align: center!important;
+    justify-content: center;
+}
+
+.title{
+    font-size: 60px;
+    font-family: Muli;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.75;
+}
+
+.about_row{
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.about_col{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: left;
+    text-align: left;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 0!important;
+}
+
+.content_title{
+    text-transform: uppercase;
+    font-family: Muli;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 5rem!important;
+    margin-bottom: 1rem!important;
+}
+
+.content_body{
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-family: Muli;
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.p{
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.about_image_box{
+    display: flex;
+    vertical-align: middle;
+    width: 540px;
+    background-size: cover;
+}

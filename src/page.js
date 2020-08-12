@@ -12,18 +12,20 @@ import Alarm from './alarm'
 import exerciseDetails from "./exerciseDetails";
 // import foodDetails from "./foodDetails";
 import NotFound from "./notFound";
-
+import About from "./about";
+import Contact from "./contact";
 import Agreement from "./components/agreement";
 import Footer from "./footer";
 // import registration from './registration';
 import authPage from "./authPage";
 import AuthConext from './context/auth-context';
+import Cookies from 'js-cookie';
 import "./style/App.css";
 // import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 const client = new ApolloClient({
-  uri: 'https://crazyfitapi.herokuapp.com/graphql'
-  // uri: 'http://localhost:5000/graphql'
+  // uri: 'https://crazyfitapi.herokuapp.com/graphql'
+  uri: 'http://localhost:5000/graphql'
 });
 
 class Page extends Component {
@@ -31,6 +33,7 @@ class Page extends Component {
   state = {
     token: null,
     id: null,
+    cookie: null
   }
 
   login = (token, id, tokenExpiration) => {
@@ -41,6 +44,10 @@ class Page extends Component {
     this.setState({ token: null, id: null })
   }
 
+  readCookie = () => {
+    this.setState({cookie: Cookies.get('token')});
+  }
+
   render() {
     return (
       <ApolloProvider client={client}>
@@ -49,24 +56,26 @@ class Page extends Component {
             <NavBar />
             <div className="App">
               <Switch>
-                
+                <Route path="/about" component={About} />
+                <Route path="/contact" component={Contact} />
                 <Route path="/recipes" component={Recipes} />
-                {this.state.token &&<Route path="/foods" component={Foods} />}
+                {this.state.token && <Route path="/foods" component={Foods} />}
                 <Route path="/exercises/:id" component={exerciseDetails} />
                 {this.state.token && <Route path="/exercises" render={(props) => <Exercises sortBy="newest" {...props} />} />}
                 {this.state.token && <Route path="/alarm" component={Alarm} />}
                 {this.state.token && <Route path="/history" component={History} />}
                 <Route path="/agreement" component={Agreement} />
                 <Route path="/home" component={Home} />
-                {!this.state.token &&<Route path="/authPage" component={authPage} />}
+                {!this.state.token && <Route path="/authPage" component={authPage} />}
                 <Route path="/notfound" component={NotFound} />
                 {!this.state.token && <Redirect to="/authPage" exact />}
                 <Redirect to="/home" />
               </Switch>
             </div>
+            <Footer />
           </AuthConext.Provider>
         </div>
-        <Footer />
+        
       </ApolloProvider>
     );
   }

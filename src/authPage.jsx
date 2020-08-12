@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './style/authPage.css';
 import AuthContext from './context/auth-context';
+import Cookies from 'js-cookie';
 
 class authPage extends Component {
     state = {
@@ -74,11 +75,18 @@ class authPage extends Component {
         .then(resData => {
             console.log(resData);
             if (this.state.isLogin && resData.data.login.token) {
+                localStorage.setItem('jwt', resData.data.login.token);
+                console.log(localStorage.getItem('jwt'));
                 this.context.login(
                     resData.data.login.token,
                     resData.data.login.id,
                     resData.data.login.tokenExpiration
                 );
+                this.context.id = resData.data.login.id;
+                this.context.token = resData.data.login.token;
+                Cookies.set("token", this.context.token);
+                console.log([this.context.id, this.context.token]);
+                
             } else if (!this.state.isLogin && resData.data.addUser.token) {
                 this.context.login(
                     resData.data.addUser.token,
@@ -86,11 +94,19 @@ class authPage extends Component {
                     resData.data.addUser.tokenExpiration
                 );
             }
+            console.log(document.cookie);
         })
         .catch(err => {
             console.log(err);
         });
     };
+
+    readCookie = () => {
+        const token = Cookies.get("token");
+        if (token) {
+            this.context.token = token;
+        }
+    }
     
     render() { 
         return ( 

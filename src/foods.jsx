@@ -6,7 +6,9 @@ import AddFood from "./addFood";
 import { getFoodsQuery, deleteFoodMutation, editFoodMutation } from './queries/queries';
 import * as compose from 'lodash.flowright';
 import AuthContext from './context/auth-context';
+import _ from 'lodash';
 import "./style/App.css";
+import { Button } from "antd";
 
 
 
@@ -39,15 +41,15 @@ class Foods extends Component {
     if (data.loading) {
       return (<tr><td colSpan="5">Loading data...</td></tr>);
     } else {
-      const dataaa = data.foods.filter(f => {return f.user === null ? "" : f.user.id === userId});
-      console.log("filter data is: " + dataaa);
+      const dataaa = _.filter(data.foods, {user: {id: userId }});
+      
       return (dataaa.map(f => (
-        <tr key={f.id}>
+          <tr key={f.id}>
           <td className="col">{f.name}</td>
           <td className="col">{f.calories}</td>
           <td className="col">{f.status}</td>
           <td>
-            <Like liked={data.foods[this.getIndex(data.foods, f)].liked} onClick={() => this.handleLike(data.foods[this.getIndex(data.foods, f)])}/>
+            <Like liked={f.liked} onClick={() => this.handleLike(f)}/>
           </td>
           <td className="col"><button onClick={() => this.handleDelete(f)} className="btn btn-danger btn-sm">Delete</button></td>
         </tr>
@@ -80,13 +82,15 @@ class Foods extends Component {
     }
   }
 
-  handleLike = (food) => {
+  handleLike = food => {
     console.log(this.props);
+    console.log(food.name);
+    console.log(food.liked);
     
     this.props.editFoodMutation({
       variables: {
         name: food.name,
-        liked: food.liked
+        liked: !food.liked
       },
       refetchQueries: [{ query: getFoodsQuery }]
     });

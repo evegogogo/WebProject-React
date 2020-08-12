@@ -6,7 +6,7 @@
   position: relative;
   line-height: 1.5;
   min-height: calc(100vh - 4rem);
-  
+  overflow: hidden;
 }
 
 .App {
@@ -79,7 +79,7 @@
 .navbar-brand {
   font-size:xx-large;
   font-weight: bold;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: Muli;
 }
 
 .navbar-nav {
