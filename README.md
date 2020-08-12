@@ -19,6 +19,10 @@ CrazyFit a fitness web application that intends to help people who want to lose 
 
 In iteration 2, we we developed CRUD modules, queries and mutations. In addition, we created an authenticated login and signup form, so that users can log in and see the personal information. In the recipes page, the users can search relative recipes by the key words, such as apple and banana. In the food and exercise pages, the users can add the food and exercise by calories, status and date. In addition, the users can delete and like the food and exercise. In the alarm page, the users can set the time to exercise and the alarm will sound to remind the user. In the history page, the users' record will show by the date and in the descending order.
 
+### Iteration 3
+
+In iteration 3, we replaced the previous temporary auth0 login and enabled out own login/logout flow. We can add users' information to database when clicking signup button. The registered users can then signin when they click login button. The login queries get the jwt token back and use the token to protect routes. Logged in users will get their own saved foods, exercises and displayed history. We then save the token and set it as cookie to persist users' login status. Furthermore, we finish all the pages in footer. All users can send messages to Menglin's email, and the messages will be stored in database as well.
+
 ## Contributions
 
 Jingzheng Song:
