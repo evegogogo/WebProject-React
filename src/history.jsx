@@ -90,8 +90,20 @@ class History extends Component {
       const info2 = this.sortByDate(exercisesInfo.exercises);
       const info3 = [...info, ...info2];
       const sorted = this.sortByDate(info3);
-      const val = sorted.filter(i => {return i.user === null ? "" : i.user.id === userId}).reduce((prev, cur) => this.getType(cur) === 'food' ? prev + cur.calories : prev - cur.calories, 0);
-      return val;
+      const ownData = sorted.filter(i => {return i.user === null ? "" : i.user.id === userId});
+      let total = 0;
+      for (let d of ownData) {
+        if (this.getType(d) === 'food') {
+          total += d.calories;
+        } else {
+          if (d.status === 'finished') {
+            total -= d.calories;
+          }
+        }
+      }
+      return total;
+      // const val = sorted.filter(i => {return i.user === null ? "" : i.user.id === userId}).reduce((prev, cur) => this.getType(cur) === 'food' ? prev + cur.calories : prev - cur.calories, 0);
+      // return val;
     }
   }
 
